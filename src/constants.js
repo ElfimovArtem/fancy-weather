@@ -1,0 +1,11 @@
+export const myInterval = 500;
+export const placeholderOnRusLang = 'Поиск города';
+export const placeholderOnEngLang = 'Search city';
+export const placeholderOnBelLang = 'Пошук гарады';
+export const engPattern = '^[a-zA-Z]+$';
+export const rusPattern = '^[а-яА-Я]+$';
+export const searchButtonInRussian = 'ПОИСК';
+export const searchButtonInEnglish = 'SEARCH';
+export const searchButtonInBelarusian = 'ПОШУК';
+export const russianLanguage = 'ru';
+export const englishLanguage = 'en';
