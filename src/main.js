@@ -11,7 +11,13 @@ import {
   placeholderOnEngLang,
   placeholderOnRusLang,
   rusPattern,
-  russianLanguage
+  russianLanguage,
+  longitudeTitleOnEng,
+  latitudeTitleOnEng,
+  latitudeTitleOnRus,
+  longitudeTitleOnRus,
+  longitudeTitleOnBel,
+  latitudeTitleOnBel
 } from './constants';
 import { dateNow } from './components/date-handler';
 import { fetchLocationCoordinates } from './components/location-coordinates-handler';
@@ -24,6 +30,8 @@ const searchCityInput = document.getElementById('search-city-input');
 const searchCityButton = document.getElementById('search-button');
 const refreshButton = document.getElementById('refresh');
 const searchForm = document.getElementById('search-city-form');
+const longitudeTitle = document.getElementById('longitude-title');
+const latitudeTitle = document.getElementById('latitude-title');
 export const weekDay = document.getElementById('this-week-day');
 export let locationRequest;
 export let selectedLanguage = englishLanguage;
@@ -38,15 +46,20 @@ languageContainer.addEventListener('click', (event) => {
     searchCityInput.pattern = engPattern;
     searchCityInput.placeholder = placeholderOnEngLang;
     searchCityButton.innerHTML = searchButtonInEnglish;
-
+    latitudeTitle.innerHTML = latitudeTitleOnEng;
+    longitudeTitle.innerHTML = longitudeTitleOnEng;
   } else if (selectedLanguage === russianLanguage) {
     searchCityInput.pattern = rusPattern;
     searchCityInput.placeholder = placeholderOnRusLang;
     searchCityButton.innerHTML = searchButtonInRussian;
+    latitudeTitle.innerHTML = latitudeTitleOnRus;
+    longitudeTitle.innerHTML = longitudeTitleOnRus;
   } else {
     searchCityInput.pattern = engPattern;
     searchCityInput.placeholder = placeholderOnBelLang;
     searchCityButton.innerHTML = searchButtonInBelarusian;
+    latitudeTitle.innerHTML = latitudeTitleOnBel;
+    longitudeTitle.innerHTML = longitudeTitleOnBel;
   }
 });
 
