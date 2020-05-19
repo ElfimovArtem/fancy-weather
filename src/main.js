@@ -113,8 +113,11 @@ searchForm.addEventListener('submit', event => {
 
 if (selectedLanguage === englishLanguage) {
   document.querySelector('.language-button__en')['classList'].add('language-button-active');
+  searchCityInput.pattern = engPattern;
 } else if (selectedLanguage === russianLanguage) {
+  searchCityInput.pattern = rusPattern;
   document.querySelector('.language-button__ru')['classList'].add('language-button-active');
 } else {
+  searchCityInput.pattern = rusPattern;
   document.querySelector('.language-button__be')['classList'].add('language-button-active');
 }
