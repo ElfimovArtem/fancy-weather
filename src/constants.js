@@ -13,3 +13,6 @@ export const belorussianLanguage = 'be';
 export const daysOnRus = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 export const daysOnEng = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 export const daysOnBel = ['Нядзеля', 'Панядзелак', 'Аўторак', 'Серада', 'Чацвер', 'Пятніца', 'Субота'];
+export const monthOnRus = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+export const monthOnEng = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+export const monthOnBel = ['Студзеня', 'Лютага', 'Сакавіка', 'Красавіка', 'Траўня', 'Чэрвеня', 'Ліпеня', 'Аўгуста', 'Верасня', 'Кастрычніка', 'Лістапада', 'Снежня'];
