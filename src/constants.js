@@ -9,3 +9,7 @@ export const searchButtonInEnglish = 'SEARCH';
 export const searchButtonInBelarusian = 'ПОШУК';
 export const russianLanguage = 'ru';
 export const englishLanguage = 'en';
+export const belorussianLanguage = 'be';
+export const daysOnRus = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+export const daysOnEng = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+export const daysOnBel = ['Нядзеля', 'Панядзелак', 'Аўторак', 'Серада', 'Чацвер', 'Пятніца', 'Субота'];

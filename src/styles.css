@@ -137,10 +137,18 @@ body {
 .weather-block__location-city {
   font-size: 40px;
   font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .weather-block__location-date {
   font-size: 24px;
+  margin: 10px 0;
+}
+
+.weather-block__location-week-day {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
 }
 
 .weather-block__weather-today {

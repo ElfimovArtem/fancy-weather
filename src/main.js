@@ -15,6 +15,7 @@ import {
 } from './constants';
 import { dateNow } from './components/date-handler';
 import { fetchLocationCoordinates } from './components/location-coordinates-handler';
+import { getWeekDay } from './components/week-day-handler';
 import './styles.css';
 
 const languageContainer = document.getElementById('language-container');
@@ -23,6 +24,7 @@ const searchCityInput = document.getElementById('search-city-input');
 const searchCityButton = document.getElementById('search-button');
 const refreshButton = document.getElementById('refresh');
 const searchForm = document.getElementById('search-city-form');
+export const weekDay = document.getElementById('this-week-day');
 export let locationRequest;
 export let selectedLanguage = englishLanguage;
 
@@ -31,6 +33,7 @@ languageContainer.addEventListener('click', (event) => {
     .forEach(el => el.classList.remove('language-button-active'));
   event.target['classList'].add('language-button-active');
   selectedLanguage = event.target['innerHTML'].toLowerCase();
+  getWeekDay();
   if (selectedLanguage === englishLanguage) {
     searchCityInput.pattern = engPattern;
     searchCityInput.placeholder = placeholderOnEngLang;
@@ -60,10 +63,11 @@ temperatureContainer.addEventListener('click', (ev) => {
 fetchUserGeolocation();
 
 //-----------------------------------------------------------------------------------
-// Здесь работаем с датой
+// Здесь работаем с датой и днем недели
 //-----------------------------------------------------------------------------------
 
 setInterval(() => dateNow(), myInterval);
+getWeekDay();
 
 //-----------------------------------------------------------------------------------
 // получаем фото для фона, которое меняется при каждом обновлении страницы
@@ -87,5 +91,3 @@ searchForm.addEventListener('submit', event => {
   fetchLocationCoordinates();
   event.preventDefault();
 });
-
-
