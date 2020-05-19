@@ -30,17 +30,18 @@ const searchCityInput = document.getElementById('search-city-input');
 const searchCityButton = document.getElementById('search-button');
 const refreshButton = document.getElementById('refresh');
 const searchForm = document.getElementById('search-city-form');
-const longitudeTitle = document.getElementById('longitude-title');
-const latitudeTitle = document.getElementById('latitude-title');
+export const longitudeTitle = document.getElementById('longitude-title');
+export const latitudeTitle = document.getElementById('latitude-title');
 export const weekDay = document.getElementById('this-week-day');
 export let locationRequest;
-export let selectedLanguage = englishLanguage;
+export let selectedLanguage = sessionStorage.getItem('lang') || englishLanguage;
 
 languageContainer.addEventListener('click', (event) => {
   languageContainer.querySelectorAll('.language-button')
     .forEach(el => el.classList.remove('language-button-active'));
   event.target['classList'].add('language-button-active');
   selectedLanguage = event.target['innerHTML'].toLowerCase();
+  sessionStorage.setItem('lang', selectedLanguage);
   getWeekDay();
   if (selectedLanguage === englishLanguage) {
     searchCityInput.pattern = engPattern;
@@ -104,3 +105,16 @@ searchForm.addEventListener('submit', event => {
   fetchLocationCoordinates();
   event.preventDefault();
 });
+
+
+//-----------------------------------------------------------------------------------
+//  Проверка выбранного языка (После перезагрузки чтобы осталась активной кнопка).
+//-----------------------------------------------------------------------------------
+
+if (selectedLanguage === englishLanguage) {
+  document.querySelector('.language-button__en')['classList'].add('language-button-active');
+} else if (selectedLanguage === russianLanguage) {
+  document.querySelector('.language-button__ru')['classList'].add('language-button-active');
+} else {
+  document.querySelector('.language-button__be')['classList'].add('language-button-active');
+}
