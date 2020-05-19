@@ -1,4 +1,4 @@
-export const myInterval = 500;
+export const myInterval = 300;
 export const placeholderOnRusLang = 'Поиск города';
 export const placeholderOnEngLang = 'Search city';
 export const placeholderOnBelLang = 'Пошук гарады';
