@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+    rel="shortcut icon"
+    href="https://lh3.googleusercontent.com/YJsLFPasgkTBPEB4Zfioy65xJbI-HIYNZDbXMcF4bRtdi-ijBhWugnjGdUr_Wa6QPVU"
+    type="image/x-icon"
+  >
+  <link rel="stylesheet" href="styles.css" type="text/css">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet">
+  <title>Fancy Weather</title>
+</head>
+<body>
+<div class="wrapper" id="wrapper">
+  <div class="tools-container">
+    <div class="control-container">
+      <button class="refresh-button tools-container__default-button-styles" type="button" id="refresh">
+        <i class="fa fa-refresh refresh-image"></i>
+      </button>
+      <div class="language-buttons-container" id="language-container">
+        <button
+          class="language-button language-button__en language-button-active tools-container__default-button-styles"
+          type="button"
+          id="language-button"
+        >EN</button>
+        <button
+          class="language-button language-button__be tools-container__default-button-styles"
+          type="button"
+          id="language-button"
+        >BE</button>
+        <button
+          class="language-button language-button__ru tools-container__default-button-styles"
+          type="button"
+          id="language-button"
+        >RU</button>
+      </div>
+      <div class="temperature-buttons-container" id="temperature-container">
+        <button
+          class="temperature-button tools-container__default-button-styles"
+          type="button"
+          data-unit="fahrenheit"
+        >°F
+        </button>
+        <button
+          class="temperature-button temperature-button-active tools-container__default-button-styles"
+          type="button"
+          data-unit="celsius"
+        >°С
+        </button>
+      </div>
+    </div>
+    <form class="search-city-form" id="search-city-form">
+      <input
+        class="tools-container__default-button-styles"
+        id="search-city-input"
+        type="text"
+        name="city"
+        autocomplete="off"
+        placeholder="Search city"
+        pattern="^[a-zA-Z]+$"
+      >
+      <button class="voice-search-city tools-container__default-button-styles" type="button">
+        <i class="fa fa-microphone voice-search-city-icon"></i>
+      </button>
+      <button class="search-city-button tools-container__default-button-styles" type="submit" id="search-button">
+        SEARCH
+      </button>
+    </form>
+  </div>
+  <div class="main-container">
+    <div class="main-container__weather-block">
+      <div class="weather-block__location">
+        <p class="weather-block__location-city" id="this-city">SOME CITY</p>
+        <p class="weather-block__location-date" id="this-date">SOME DATE</p>
+      </div>
+      <div class="weather-block__weather-today">
+        <p class="weather-block__weather-today-temperature">19°</p>
+        <div class="weather-block__weather-today-description">
+          <img class="weather-block__weather-today-description-image" alt="weather-image" src="#">
+          <div class="weather-block__weather-today-description-data">
+            <p>Overcast</p>
+            <p>Feels Like: 1111°</p>
+            <p>Wind: 3333 m/s</p>
+            <p>Humidity: 333%</p>
+          </div>
+        </div>
+      </div>
+      <div class="weather-block__forecast">
+        <div class="weather-block__forecast-on-day">
+          <p class="forecast-on-day__day-of-the-week">Friday</p>
+          <div class="forecast-on-day__description">
+            <p class="forecast-on-day__description-temperature">9°</p>
+            <img class="forecast-on-day__description-icon" alt="forecast" src="#">
+          </div>
+        </div>
+        <div class="weather-block__forecast-on-day">
+          <p class="forecast-on-day__day-of-the-week">Friday</p>
+          <div class="forecast-on-day__description">
+            <p class="forecast-on-day__description-temperature">9°</p>
+            <img class="forecast-on-day__description-icon" alt="forecast" src="#">
+          </div>
+        </div>
+        <div class="weather-block__forecast-on-day">
+          <p class="forecast-on-day__day-of-the-week">Friday</p>
+          <div class="forecast-on-day__description">
+            <p class="forecast-on-day__description-temperature">9°</p>
+            <img class="forecast-on-day__description-icon" alt="forecast" src="#">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-container__map-block">
+      <div class="map-block__map" id="map"></div>
+      <div class="map-block__coordinates">
+        <p>
+          <span>Latitude: </span>
+          <span id="latitude"></span>
+          <span>'</span>
+        </p>
+        <p>
+          <span>Longitude:  </span>
+          <span id="longitude"></span>
+          <span>'</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
