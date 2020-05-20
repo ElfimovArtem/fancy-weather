@@ -86,14 +86,37 @@
         <p class="weather-block__location-week-day" id="this-week-day"></p>
       </div>
       <div class="weather-block__weather-today">
-        <p class="weather-block__weather-today-temperature">19°</p>
+        <div class="weather-block__weather-today-container">
+          <p
+            class="weather-block__weather-today-container-temperature"
+            id="weather-today-temp"
+          ></p>
+          <p
+            class="weather-block__weather-today-container-text"
+            id="weather-today-text"
+          ></p>
+        </div>
         <div class="weather-block__weather-today-description">
-          <img class="weather-block__weather-today-description-image" alt="weather-image" src="#">
+          <img
+            class="weather-block__weather-today-description-image"
+            alt="weather-image"
+            id="weather-today-image"
+            src=""
+          >
           <div class="weather-block__weather-today-description-data">
-            <p>Overcast</p>
-            <p>Feels Like: 1111°</p>
-            <p>Wind: 3333 m/s</p>
-            <p>Humidity: 333%</p>
+            <p class="overcast">Overcast</p>
+            <div class="weather-block__weather-today-description-data-feels-like">
+              <p class="weather-block__weather-today-description-data-text">Feels Like:</p>
+              <p id="weather-today-feels-like"></p>
+            </div>
+            <div class="weather-block__weather-today-description-data-wind">
+              <p class="weather-block__weather-today-description-data-text">Wind:</p>
+              <p id="weather-today-wind"></p>
+            </div>
+            <div class="weather-block__weather-today-description-data-humidity">
+              <p class="weather-block__weather-today-description-data-text">Humidity:</p>
+              <p id="weather-today-humidity"></p>
+            </div>
           </div>
         </div>
       </div>

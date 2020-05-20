@@ -135,18 +135,18 @@ body {
 }
 
 .weather-block__location-city {
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
 .weather-block__location-date {
-  font-size: 24px;
+  font-size: 26px;
   margin: 10px 0;
 }
 
 .weather-block__location-week-day {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   margin: 0;
 }
@@ -157,10 +157,33 @@ body {
   padding-top: 45px;
 }
 
-.weather-block__weather-today-temperature {
-  font-size: 155px;
-  margin: 0 60px 0 0;
+.weather-block__weather-today-container {
+  margin: 0 70px 0 0;
+  width: 60%;
+}
+
+.weather-block__weather-today-description {
+  width: 40%;
+}
+
+.weather-block__weather-today-container-text {
+  text-align: center;
+  font-size: 30px;
+  margin: 0;
   font-weight: 700;
+}
+
+.weather-block__weather-today-container-temperature {
+  font-size: 150px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  padding-left: 10%;
+}
+
+.weather-block__weather-today-description-image {
+  display: block;
+  width: 42%;
 }
 
 .weather-block__weather-today-description {
@@ -204,4 +227,32 @@ body {
   width: 100%;
   text-align: center;
   color: #ffffff;
+}
+
+.overcast {
+  font-size: 24px;
+  text-decoration: underline;
+  margin: 15px 0;
+}
+
+.weather-block__weather-today-description-data div {
+  padding-bottom: 10px;
+  display: flex;
+}
+
+.weather-block__weather-today-description-data-text {
+  margin: 0 3% 0 0;
+}
+
+#weather-today-feels-like {
+  margin: 0;
+}
+
+#weather-today-wind {
+  margin: 0;
+  text-transform: lowercase;
+}
+
+#weather-today-humidity {
+  margin: 0;
 }

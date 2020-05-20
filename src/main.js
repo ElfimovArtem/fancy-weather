@@ -17,11 +17,14 @@ import {
   latitudeTitleOnRus,
   longitudeTitleOnRus,
   longitudeTitleOnBel,
-  latitudeTitleOnBel
+  latitudeTitleOnBel,
+  celsius,
+  fahrenheit
 } from './constants';
 import { dateNow } from './components/date-handler';
 import { fetchLocationCoordinates } from './components/location-coordinates-handler';
 import { getWeekDay } from './components/week-day-handler';
+import { fetchWeatherForecast } from './components/weather-forecast';
 import './styles.css';
 
 const languageContainer = document.getElementById('language-container');
@@ -35,6 +38,7 @@ export const latitudeTitle = document.getElementById('latitude-title');
 export const weekDay = document.getElementById('this-week-day');
 export let locationRequest;
 export let selectedLanguage = sessionStorage.getItem('lang') || englishLanguage;
+export let temperatureMeasuringDevice = sessionStorage.getItem('temp') || celsius;  // ДОДЕЛАТЬ!!!
 
 languageContainer.addEventListener('click', (event) => {
   languageContainer.querySelectorAll('.language-button')
@@ -121,3 +125,6 @@ if (selectedLanguage === englishLanguage) {
   searchCityInput.pattern = rusPattern;
   document.querySelector('.language-button__be')['classList'].add('language-button-active');
 }
+
+
+fetchWeatherForecast('Moscow');

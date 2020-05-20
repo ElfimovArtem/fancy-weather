@@ -22,3 +22,5 @@ export const latitudeTitleOnBel = 'Шырата: ';
 export const longitudeTitleOnEng = 'Longitude:  ';
 export const longitudeTitleOnRus = 'Долгота: ';
 export const longitudeTitleOnBel = 'Даўгата: ';
+export const fahrenheit = 'fahrenheit';
+export const celsius = 'celsius';
