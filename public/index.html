@@ -46,13 +46,13 @@
       </div>
       <div class="temperature-buttons-container" id="temperature-container">
         <button
-          class="temperature-button tools-container__default-button-styles"
+          class="temperature-button temperature-button-f tools-container__default-button-styles"
           type="button"
           data-unit="fahrenheit"
         >°F
         </button>
         <button
-          class="temperature-button temperature-button-active tools-container__default-button-styles"
+          class="temperature-button temperature-button-c tools-container__default-button-styles"
           type="button"
           data-unit="celsius"
         >°С
@@ -104,17 +104,17 @@
             src=""
           >
           <div class="weather-block__weather-today-description-data">
-            <p class="overcast">Overcast</p>
+            <p class="details" id="details"></p>
             <div class="weather-block__weather-today-description-data-feels-like">
-              <p class="weather-block__weather-today-description-data-text">Feels Like:</p>
+              <p class="weather-block__weather-today-description-data-text" id="feels-like-text"></p>
               <p id="weather-today-feels-like"></p>
             </div>
             <div class="weather-block__weather-today-description-data-wind">
-              <p class="weather-block__weather-today-description-data-text">Wind:</p>
+              <p class="weather-block__weather-today-description-data-text" id="wind-text"></p>
               <p id="weather-today-wind"></p>
             </div>
             <div class="weather-block__weather-today-description-data-humidity">
-              <p class="weather-block__weather-today-description-data-text">Humidity:</p>
+              <p class="weather-block__weather-today-description-data-text" id="humidity-text"></p>
               <p id="weather-today-humidity"></p>
             </div>
           </div>
@@ -127,7 +127,10 @@
             id="day-of-the-week-first-title"
           ></p>
           <div class="forecast-on-day__description">
-            <p class="forecast-on-day__description-temperature">9°</p>
+            <p
+              class="forecast-on-day__description-temperature"
+              id="day-of-the-week-first-temp"
+            ></p>
             <img
               class="forecast-on-day__description-icon"
               alt="forecast"
@@ -142,7 +145,10 @@
             id="day-of-the-week-second-title"
            ></p>
           <div class="forecast-on-day__description">
-            <p class="forecast-on-day__description-temperature">9°</p>
+            <p
+              class="forecast-on-day__description-temperature"
+              id="day-of-the-week-second-temp"
+            ></p>
             <img
               class="forecast-on-day__description-icon"
               alt="forecast"
@@ -157,7 +163,10 @@
             id="day-of-the-week-third-title"
           ></p>
           <div class="forecast-on-day__description">
-            <p class="forecast-on-day__description-temperature">9°</p>
+            <p
+              class="forecast-on-day__description-temperature"
+              id="day-of-the-week-third-temp"
+            ></p>
             <img
               class="forecast-on-day__description-icon"
               alt="forecast"
