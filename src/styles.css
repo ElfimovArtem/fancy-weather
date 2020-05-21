@@ -205,14 +205,17 @@ body {
 .forecast-on-day__day-of-the-week {
   text-align: center;
   font-weight: 700;
+  margin-bottom: 0;
+  font-size: 22px;
 }
 
 .forecast-on-day__description {
   display: flex;
+  padding-left: 10%;
 }
 
 .forecast-on-day__description-temperature {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .map-block__map {
