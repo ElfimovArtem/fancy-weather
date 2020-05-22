@@ -20,8 +20,14 @@ import {
   windBe,
   windEn,
   windRu,
+  details,
+  latitudeTitle,
+  longitudeTitle,
+  feelsLikeText,
+  windText,
+  humidityText
 } from '../constants';
-import { details, selectedLanguage, latitudeTitle, longitudeTitle, feelsLikeText, windText, humidityText } from '../main';
+import { selectedLanguage } from '../main';
 
 export const city = document.getElementById('this-city');
 export const latitude = document.getElementById('latitude');
@@ -32,38 +38,44 @@ export const fetchUserGeolocation = () => {
   fetch(geoUrl)
     .then((res) => res.json())
     .then(geoData => {
-      const local = geoData['loc'].split(',');
-      const thisLatitude = Number(local[0]).toFixed(2);
-      const thisLongitude = Number(local[1]).toFixed(2);
+      if (geoData) {
+        const local = geoData['loc'].split(',');
+        const thisLatitude = Number(local[0]).toFixed(2);
+        const thisLongitude = Number(local[1]).toFixed(2);
 
-      city.innerHTML = geoData.city;
+        city.innerHTML = geoData.city;
 
-      if (selectedLanguage === englishLanguage) {
-        latitudeTitle.innerHTML = latitudeTitleOnEng;
-        longitudeTitle.innerHTML = longitudeTitleOnEng;
-        details.innerHTML = detailsEn;
-        feelsLikeText.innerHTML = feelsLikeEn;
-        windText.innerHTML = windEn;
-        humidityText.innerHTML = humidityTextEn;
-      } else if (selectedLanguage === russianLanguage) {
-        latitudeTitle.innerHTML = latitudeTitleOnRus;
-        longitudeTitle.innerHTML = longitudeTitleOnRus;
-        details.innerHTML = detailsRu;
-        feelsLikeText.innerHTML = feelsLikeRu;
-        windText.innerHTML = windRu;
-        humidityText.innerHTML = humidityTextRu;
+        if (selectedLanguage === englishLanguage) {
+          latitudeTitle.innerHTML = latitudeTitleOnEng;
+          longitudeTitle.innerHTML = longitudeTitleOnEng;
+          details.innerHTML = detailsEn;
+          feelsLikeText.innerHTML = feelsLikeEn;
+          windText.innerHTML = windEn;
+          humidityText.innerHTML = humidityTextEn;
+        } else if (selectedLanguage === russianLanguage) {
+          latitudeTitle.innerHTML = latitudeTitleOnRus;
+          longitudeTitle.innerHTML = longitudeTitleOnRus;
+          details.innerHTML = detailsRu;
+          feelsLikeText.innerHTML = feelsLikeRu;
+          windText.innerHTML = windRu;
+          humidityText.innerHTML = humidityTextRu;
+        } else {
+          latitudeTitle.innerHTML = latitudeTitleOnBel;
+          longitudeTitle.innerHTML = longitudeTitleOnBel;
+          details.innerHTML = detailsBe;
+          feelsLikeText.innerHTML = feelsLikeBe;
+          windText.innerHTML = windBe;
+          humidityText.innerHTML = humidityTextBe;
+        }
+
+        latitude.innerHTML = thisLatitude;
+        longitude.innerHTML = thisLongitude;
+
+        createMap(thisLongitude, thisLatitude);
       } else {
-        latitudeTitle.innerHTML = latitudeTitleOnBel;
-        longitudeTitle.innerHTML = longitudeTitleOnBel;
-        details.innerHTML = detailsBe;
-        feelsLikeText.innerHTML = feelsLikeBe;
-        windText.innerHTML = windBe;
-        humidityText.innerHTML = humidityTextBe;
+        alert('Ошибка при получении Вашей геопозиции / Error getting your location');
+        throw new Error('Ошибка при получении Вашей геопозиции / Error getting your location');
       }
 
-      latitude.innerHTML = thisLatitude;
-      longitude.innerHTML = thisLongitude;
-
-      createMap(thisLongitude, thisLatitude);
     })
 };

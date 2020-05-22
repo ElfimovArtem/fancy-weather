@@ -4,65 +4,26 @@ import {
   englishLanguage,
   engPattern,
   myInterval,
-  searchButtonInEnglish,
-  searchButtonInRussian,
-  searchButtonInBelarusian,
-  placeholderOnBelLang,
-  placeholderOnEngLang,
-  placeholderOnRusLang,
+  searchForm,
   rusPattern,
+  languageContainer,
+  temperatureContainer,
   russianLanguage,
-  longitudeTitleOnEng,
-  latitudeTitleOnEng,
-  latitudeTitleOnRus,
-  longitudeTitleOnRus,
-  longitudeTitleOnBel,
-  latitudeTitleOnBel,
+  refreshButton,
+  searchCityInput,
   celsius,
   fahrenheit,
-  daysOnEng,
-  daysOnRus,
-  daysOnBel,
-  detailsEn,
-  detailsRu,
-  detailsBe,
-  feelsLikeEn,
-  feelsLikeRu,
-  feelsLikeBe,
-  windEn,
-  windRu,
-  windBe,
-  humidityTextEn,
-  humidityTextRu,
-  humidityTextBe
+  temperatureButtonC,
+  temperatureButtonF
 } from './constants';
 import { dateNow } from './components/date-handler';
 import { fetchLocationCoordinates } from './components/location-coordinates-handler';
 import { getWeekDay } from './components/week-day-handler';
-import {
-  fetchWeatherForecast,
-  weatherForecastDayFirstTitle,
-  weatherForecastDaySecondTitle,
-  weatherForecastDayThirdTitle
-} from './components/weather-forecast';
+import { fetchWeatherForecast } from './components/weather-forecast';
+import { selectLanguageHandler } from './components/select-language-handler';
 import './styles.css';
 import './media-queries.css';
 
-const languageContainer = document.getElementById('language-container');
-const temperatureContainer = document.getElementById('temperature-container');
-const searchCityInput = document.getElementById('search-city-input');
-const searchCityButton = document.getElementById('search-button');
-const refreshButton = document.getElementById('refresh');
-const searchForm = document.getElementById('search-city-form');
-const temperatureButtonC = document.querySelector('.temperature-button-c');
-const temperatureButtonF = document.querySelector('.temperature-button-f');
-export const feelsLikeText = document.getElementById('feels-like-text');
-export const humidityText = document.getElementById('humidity-text');
-export const windText = document.getElementById('wind-text');
-export const details = document.getElementById('details');
-export const longitudeTitle = document.getElementById('longitude-title');
-export const latitudeTitle = document.getElementById('latitude-title');
-export const weekDay = document.getElementById('this-week-day');
 export let locationRequest;
 export let selectedLanguage = sessionStorage.getItem('lang') || englishLanguage;
 export let temperatureMeasuringDevice = sessionStorage.getItem('temp') || celsius;
@@ -74,46 +35,7 @@ languageContainer.addEventListener('click', (event) => {
   selectedLanguage = event.target['innerHTML'].toLowerCase();
   sessionStorage.setItem('lang', selectedLanguage);
   getWeekDay();
-  if (selectedLanguage === englishLanguage) {
-    searchCityInput.pattern = engPattern;
-    searchCityInput.placeholder = placeholderOnEngLang;
-    searchCityButton.innerHTML = searchButtonInEnglish;
-    latitudeTitle.innerHTML = latitudeTitleOnEng;
-    longitudeTitle.innerHTML = longitudeTitleOnEng;
-    weatherForecastDayFirstTitle.innerHTML = daysOnEng[weatherForecastDayFirstTitle.dataset.index];
-    weatherForecastDaySecondTitle.innerHTML = daysOnEng[weatherForecastDaySecondTitle.dataset.index];
-    weatherForecastDayThirdTitle.innerHTML = daysOnEng[weatherForecastDayThirdTitle.dataset.index];
-    details.innerHTML = detailsEn;
-    feelsLikeText.innerHTML = feelsLikeEn;
-    windText.innerHTML = windEn;
-    humidityText.innerHTML = humidityTextEn;
-  } else if (selectedLanguage === russianLanguage) {
-    searchCityInput.pattern = rusPattern;
-    searchCityInput.placeholder = placeholderOnRusLang;
-    searchCityButton.innerHTML = searchButtonInRussian;
-    latitudeTitle.innerHTML = latitudeTitleOnRus;
-    longitudeTitle.innerHTML = longitudeTitleOnRus;
-    weatherForecastDayFirstTitle.innerHTML = daysOnRus[weatherForecastDayFirstTitle.dataset.index];
-    weatherForecastDaySecondTitle.innerHTML = daysOnRus[weatherForecastDaySecondTitle.dataset.index];
-    weatherForecastDayThirdTitle.innerHTML = daysOnRus[weatherForecastDayThirdTitle.dataset.index];
-    details.innerHTML = detailsRu;
-    feelsLikeText.innerHTML = feelsLikeRu;
-    windText.innerHTML = windRu;
-    humidityText.innerHTML = humidityTextRu;
-  } else {
-    searchCityInput.pattern = engPattern;
-    searchCityInput.placeholder = placeholderOnBelLang;
-    searchCityButton.innerHTML = searchButtonInBelarusian;
-    latitudeTitle.innerHTML = latitudeTitleOnBel;
-    longitudeTitle.innerHTML = longitudeTitleOnBel;
-    weatherForecastDayFirstTitle.innerHTML = daysOnBel[weatherForecastDayFirstTitle.dataset.index];
-    weatherForecastDaySecondTitle.innerHTML = daysOnBel[weatherForecastDaySecondTitle.dataset.index];
-    weatherForecastDayThirdTitle.innerHTML = daysOnBel[weatherForecastDayThirdTitle.dataset.index];
-    details.innerHTML = detailsBe;
-    feelsLikeText.innerHTML = feelsLikeBe;
-    windText.innerHTML = windBe;
-    humidityText.innerHTML = humidityTextBe;
-  }
+  selectLanguageHandler();
 });
 
 temperatureContainer.addEventListener('click', (ev) => {

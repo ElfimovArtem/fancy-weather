@@ -10,13 +10,18 @@ export const fetchLocationCoordinates = () => {
   fetch(locationURL)
     .then((res) => res.json())
     .then(locationData => {
-      const thisLocationLatitude = locationData.results[0]['geometry']['lat'].toFixed(2);
-      const thisLocationLongitude = locationData.results[0]['geometry']['lng'].toFixed(2);
+      if (locationData.results[0]) {
+        const thisLocationLatitude = locationData.results[0]['geometry']['lat'].toFixed(2);
+        const thisLocationLongitude = locationData.results[0]['geometry']['lng'].toFixed(2);
 
-      createMap(thisLocationLongitude, thisLocationLatitude);
-      latitude.innerHTML = thisLocationLatitude;
-      longitude.innerHTML = thisLocationLongitude;
-      cityOnRusLang = locationData.results[0]['components']['city'] || locationData.results[0]['components']['state'];
-      enteredRequestTranslate(locationRequest);
+        createMap(thisLocationLongitude, thisLocationLatitude);
+        latitude.innerHTML = thisLocationLatitude;
+        longitude.innerHTML = thisLocationLongitude;
+        cityOnRusLang = locationData.results[0]['components']['city'] || locationData.results[0]['components']['state'];
+        enteredRequestTranslate(locationRequest);
+      } else {
+        throw new Error('Input Error / Ошибка ввода');
+      }
+
     })
 };

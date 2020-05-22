@@ -23,35 +23,46 @@ export const fetchWeatherForecast = (city) => {
   fetch(geoUrl)
     .then((res) => res.json())
     .then(weatherForecastData => {
-      weatherTodayText.innerHTML = weatherForecastData.current['condition'].text;
+      if (weatherForecastData) {
+        if (weatherForecastData.current) {
+          weatherTodayText.innerHTML = weatherForecastData.current['condition'].text;
+        } else {
+          alert('Input Error / Ошибка ввода');
+          throw new Error('Input Error / Ошибка ввода');
+        }
 
-      if (temperatureMeasuringDevice === celsius) {
-        weatherTodayTemp.innerHTML = `${Math.round(weatherForecastData.current['temp_c'])}°`;
-        weatherTodayFeelsLike.innerHTML = `${weatherForecastData.current['feelslike_c']}°`;
-        weatherForecastDayFirstTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][0]['day']['avgtemp_c']}°`;
-        weatherForecastDaySecondTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][1]['day']['avgtemp_c']}°`;
-        weatherForecastDayThirdTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][2]['day']['avgtemp_c']}°`;
-      } else if (temperatureMeasuringDevice === fahrenheit) {
-        weatherTodayTemp.innerHTML = `${Math.round(weatherForecastData.current['temp_f'])}°`;
-        weatherTodayFeelsLike.innerHTML = `${weatherForecastData.current['feelslike_f']}°`;
-        weatherForecastDayFirstTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][0]['day']['avgtemp_f']}°`;
-        weatherForecastDaySecondTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][1]['day']['avgtemp_f']}°`;
-        weatherForecastDayThirdTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][2]['day']['avgtemp_f']}°`;
+        if (temperatureMeasuringDevice === celsius) {
+          weatherTodayTemp.innerHTML = `${Math.round(weatherForecastData.current['temp_c'])}°`;
+          weatherTodayFeelsLike.innerHTML = `${weatherForecastData.current['feelslike_c']}°`;
+          weatherForecastDayFirstTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][0]['day']['avgtemp_c']}°`;
+          weatherForecastDaySecondTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][1]['day']['avgtemp_c']}°`;
+          weatherForecastDayThirdTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][2]['day']['avgtemp_c']}°`;
+        } else if (temperatureMeasuringDevice === fahrenheit) {
+          weatherTodayTemp.innerHTML = `${Math.round(weatherForecastData.current['temp_f'])}°`;
+          weatherTodayFeelsLike.innerHTML = `${weatherForecastData.current['feelslike_f']}°`;
+          weatherForecastDayFirstTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][0]['day']['avgtemp_f']}°`;
+          weatherForecastDaySecondTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][1]['day']['avgtemp_f']}°`;
+          weatherForecastDayThirdTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][2]['day']['avgtemp_f']}°`;
+        }
+
+        weatherTodayImage.src = `https:${weatherForecastData.current['condition'].icon}`;
+        weatherTodayWind.innerHTML = `${weatherForecastData.current['wind_kph']} km/h`;
+        weatherTodayHumidity.innerHTML = `${weatherForecastData.current['humidity']}%`;
+
+        weatherForecastDayFirstTitle.innerHTML = forecastWeekDay(weatherForecastData['forecast']['forecastday'][0]['date']);
+        weatherForecastDayFirstTitle.dataset['index'] = forecastWeekDayIndex(weatherForecastData['forecast']['forecastday'][0]['date']);
+        weatherForecastDaySecondTitle.innerHTML = forecastWeekDay(weatherForecastData['forecast']['forecastday'][1]['date']);
+        weatherForecastDaySecondTitle.dataset['index'] = forecastWeekDayIndex(weatherForecastData['forecast']['forecastday'][1]['date']);
+        weatherForecastDayThirdTitle.innerHTML = forecastWeekDay(weatherForecastData['forecast']['forecastday'][2]['date']);
+        weatherForecastDayThirdTitle.dataset['index'] = forecastWeekDayIndex(weatherForecastData['forecast']['forecastday'][2]['date']);
+
+        weatherForecastDayFirstIcon.src = `https:${weatherForecastData['forecast']['forecastday'][0]['day']['condition'].icon}`;
+        weatherForecastDaySecondIcon.src = `https:${weatherForecastData['forecast']['forecastday'][1]['day']['condition'].icon}`;
+        weatherForecastDayThirdIcon.src = `https:${weatherForecastData['forecast']['forecastday'][2]['day']['condition'].icon}`;
+      } else {
+        alert('Input Error / Ошибка ввода');
+        throw new Error('Input Error / Ошибка ввода');
       }
 
-      weatherTodayImage.src = `https:${weatherForecastData.current['condition'].icon}`;
-      weatherTodayWind.innerHTML = `${weatherForecastData.current['wind_kph']} km/h`;
-      weatherTodayHumidity.innerHTML = `${weatherForecastData.current['humidity']}%`;
-
-      weatherForecastDayFirstTitle.innerHTML = forecastWeekDay(weatherForecastData['forecast']['forecastday'][0]['date']);
-      weatherForecastDayFirstTitle.dataset['index'] = forecastWeekDayIndex(weatherForecastData['forecast']['forecastday'][0]['date']);
-      weatherForecastDaySecondTitle.innerHTML = forecastWeekDay(weatherForecastData['forecast']['forecastday'][1]['date']);
-      weatherForecastDaySecondTitle.dataset['index'] = forecastWeekDayIndex(weatherForecastData['forecast']['forecastday'][1]['date']);
-      weatherForecastDayThirdTitle.innerHTML = forecastWeekDay(weatherForecastData['forecast']['forecastday'][2]['date']);
-      weatherForecastDayThirdTitle.dataset['index'] = forecastWeekDayIndex(weatherForecastData['forecast']['forecastday'][2]['date']);
-
-      weatherForecastDayFirstIcon.src = `https:${weatherForecastData['forecast']['forecastday'][0]['day']['condition'].icon}`;
-      weatherForecastDaySecondIcon.src = `https:${weatherForecastData['forecast']['forecastday'][1]['day']['condition'].icon}`;
-      weatherForecastDayThirdIcon.src = `https:${weatherForecastData['forecast']['forecastday'][2]['day']['condition'].icon}`;
     })
 };

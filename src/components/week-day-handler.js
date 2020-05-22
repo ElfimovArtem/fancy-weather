@@ -1,5 +1,5 @@
-import { daysOnRus, daysOnEng, daysOnBel } from '../constants';
-import { selectedLanguage, weekDay } from '../main';
+import { daysOnRus, daysOnEng, daysOnBel, weekDay } from '../constants';
+import { selectedLanguage } from '../main';
 import { russianLanguage, englishLanguage, belorussianLanguage } from '../constants';
 
 export const getWeekDay = () => {
