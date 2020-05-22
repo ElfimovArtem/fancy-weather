@@ -26,7 +26,7 @@ export const fetchWeatherForecast = (city) => {
       weatherTodayText.innerHTML = weatherForecastData.current['condition'].text;
 
       if (temperatureMeasuringDevice === celsius) {
-        weatherTodayTemp.innerHTML = `${weatherForecastData.current['temp_c']}°`;
+        weatherTodayTemp.innerHTML = `${Math.round(weatherForecastData.current['temp_c'])}°`;
         weatherTodayFeelsLike.innerHTML = `${weatherForecastData.current['feelslike_c']}°`;
         weatherForecastDayFirstTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][0]['day']['avgtemp_c']}°`;
         weatherForecastDaySecondTemp.innerHTML = `${weatherForecastData['forecast']['forecastday'][1]['day']['avgtemp_c']}°`;

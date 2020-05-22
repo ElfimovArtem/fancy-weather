@@ -1,4 +1,4 @@
-import { fetchUserGeolocation } from './components/user-geolocation-handler';
+import { fetchUserGeolocation, city } from './components/user-geolocation-handler';
 import { fetchBackgroundImage } from './components/background-image-handler';
 import {
   englishLanguage,
@@ -121,6 +121,7 @@ temperatureContainer.addEventListener('click', (ev) => {
   ev.target['classList'].add('temperature-button-active');
   temperatureMeasuringDevice = (ev.target['dataset']['unit'] === celsius) ? celsius : fahrenheit;
   sessionStorage.setItem('temp', temperatureMeasuringDevice);
+  fetchWeatherForecast(city.innerHTML);
 });
 
 //-----------------------------------------------------------------------------------
