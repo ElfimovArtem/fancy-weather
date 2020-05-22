@@ -220,8 +220,8 @@ body {
 }
 
 .map-block__map {
-  width: 33em;
-  height: 33em;
+  width: 31em;
+  height: 31em;
   margin: 50px auto 0;
   background-color: #ffffff;
   border-radius: 5%;

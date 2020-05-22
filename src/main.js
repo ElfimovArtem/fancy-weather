@@ -46,6 +46,7 @@ import {
   weatherForecastDayThirdTitle
 } from './components/weather-forecast';
 import './styles.css';
+import './media-queries.css';
 
 const languageContainer = document.getElementById('language-container');
 const temperatureContainer = document.getElementById('temperature-container');
