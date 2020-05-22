@@ -39,12 +39,16 @@ import {
 import {
   weatherForecastDayFirstTitle,
   weatherForecastDaySecondTitle,
-  weatherForecastDayThirdTitle
+  weatherForecastDayThirdTitle,
+  weatherTodayText
 } from './weather-forecast';
 import { selectedLanguage } from '../main';
+import { city } from './user-geolocation-handler';
 
 export const selectLanguageHandler = () => {
   if (selectedLanguage === englishLanguage) {
+    city.innerHTML = city.dataset['cityEn'];
+    weatherTodayText.innerHTML = weatherTodayText.dataset['weatherEn'];
     searchCityInput.pattern = engPattern;
     searchCityInput.placeholder = placeholderOnEngLang;
     searchCityButton.innerHTML = searchButtonInEnglish;
@@ -58,6 +62,8 @@ export const selectLanguageHandler = () => {
     windText.innerHTML = windEn;
     humidityText.innerHTML = humidityTextEn;
   } else if (selectedLanguage === russianLanguage) {
+    city.innerHTML = city.dataset['cityRu'];
+    weatherTodayText.innerHTML = weatherTodayText.dataset['weatherRu'];
     searchCityInput.pattern = rusPattern;
     searchCityInput.placeholder = placeholderOnRusLang;
     searchCityButton.innerHTML = searchButtonInRussian;
@@ -71,6 +77,8 @@ export const selectLanguageHandler = () => {
     windText.innerHTML = windRu;
     humidityText.innerHTML = humidityTextRu;
   } else {
+    city.innerHTML = city.dataset['cityBe'];
+    weatherTodayText.innerHTML = weatherTodayText.dataset['weatherBe'];
     searchCityInput.pattern = engPattern;
     searchCityInput.placeholder = placeholderOnBelLang;
     searchCityButton.innerHTML = searchButtonInBelarusian;
