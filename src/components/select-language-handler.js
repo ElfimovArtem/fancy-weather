@@ -47,6 +47,7 @@ import { city } from './user-geolocation-handler';
 
 export const selectLanguageHandler = () => {
   if (selectedLanguage === englishLanguage) {
+    document.querySelector('.language-button__en')['classList'].add('language-button-active');
     city.innerHTML = city.dataset['cityEn'];
     weatherTodayText.innerHTML = weatherTodayText.dataset['weatherEn'];
     searchCityInput.pattern = engPattern;
@@ -62,6 +63,7 @@ export const selectLanguageHandler = () => {
     windText.innerHTML = windEn;
     humidityText.innerHTML = humidityTextEn;
   } else if (selectedLanguage === russianLanguage) {
+    document.querySelector('.language-button__ru')['classList'].add('language-button-active');
     city.innerHTML = city.dataset['cityRu'];
     weatherTodayText.innerHTML = weatherTodayText.dataset['weatherRu'];
     searchCityInput.pattern = rusPattern;
@@ -77,6 +79,7 @@ export const selectLanguageHandler = () => {
     windText.innerHTML = windRu;
     humidityText.innerHTML = humidityTextRu;
   } else {
+    document.querySelector('.language-button__be')['classList'].add('language-button-active');
     city.innerHTML = city.dataset['cityBe'];
     weatherTodayText.innerHTML = weatherTodayText.dataset['weatherBe'];
     searchCityInput.pattern = engPattern;

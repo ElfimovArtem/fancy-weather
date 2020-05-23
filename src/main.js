@@ -2,13 +2,10 @@ import { fetchUserGeolocation, city } from './components/user-geolocation-handle
 import { fetchBackgroundImage } from './components/background-image-handler';
 import {
   englishLanguage,
-  engPattern,
   myInterval,
   searchForm,
-  rusPattern,
   languageContainer,
   temperatureContainer,
-  russianLanguage,
   refreshButton,
   searchCityInput,
   celsius,
@@ -88,18 +85,7 @@ searchForm.addEventListener('submit', event => {
 //-----------------------------------------------------------------------------------
 //  Проверка выбранного языка (После перезагрузки чтобы осталась активной кнопка).
 //-----------------------------------------------------------------------------------
-
-if (selectedLanguage === englishLanguage) {
-  document.querySelector('.language-button__en')['classList'].add('language-button-active');
-  searchCityInput.pattern = engPattern;
-} else if (selectedLanguage === russianLanguage) {
-  searchCityInput.pattern = rusPattern;
-  document.querySelector('.language-button__ru')['classList'].add('language-button-active');
-} else {
-  searchCityInput.pattern = rusPattern;
-  document.querySelector('.language-button__be')['classList'].add('language-button-active');
-}
-
+selectLanguageHandler();
 //-----------------------------------------------------------------------------------
 //  Проверка выбранной единицы измерения (После перезагрузки чтобы осталась активной кнопка).
 //-----------------------------------------------------------------------------------
@@ -109,6 +95,5 @@ if (temperatureMeasuringDevice === celsius) {
 } else if (temperatureMeasuringDevice === fahrenheit) {
   temperatureButtonF['classList'].add('temperature-button-active');
 }
-
 
 fetchWeatherForecast('Moscow');
