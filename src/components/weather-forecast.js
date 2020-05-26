@@ -1,6 +1,7 @@
-import { celsius, fahrenheit } from '../constants';
-import { temperatureMeasuringDevice } from '../main';
+import { celsius, englishLanguage, fahrenheit, russianLanguage } from '../constants';
+import { selectedLanguage, temperatureMeasuringDevice } from '../main';
 import { forecastWeekDay, forecastWeekDayIndex } from './forecast-week-day-handler';
+import { translateWeatherTitles } from './translate-weather-titles';
 
 export const weatherTodayText = document.getElementById('weather-today-text');
 const weatherTodayTemp = document.getElementById('weather-today-temp');
@@ -26,22 +27,16 @@ export const fetchWeatherForecast = (city) => {
       if (weatherForecastData) {
         if (weatherForecastData.current) {
           const weatherTitle = weatherForecastData.current['condition'].text;
-          weatherTodayText.innerHTML = weatherTitle;
           weatherTodayText.dataset.weatherEn = weatherTitle;
 
-          const weatherRusUrl = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200504T204939Z.e8c6dde8f1e98f56.fc10912985c7abe85c8cd8894b6daae169e5604a&text=${weatherTitle}&lang=en-ru`;
-          fetch(weatherRusUrl)
-            .then((resp) => resp.json())
-            .then(weatherRusTranslateData => {
-              weatherTodayText.dataset.weatherRu = weatherRusTranslateData['text'][0];
-            });
-
-          const weatherBelUrl = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200504T204939Z.e8c6dde8f1e98f56.fc10912985c7abe85c8cd8894b6daae169e5604a&text=${weatherTitle}&lang=en-be`;
-          fetch(weatherBelUrl)
-            .then((resp) => resp.json())
-            .then(weatherBelTranslateData => {
-              weatherTodayText.dataset.weatherBe = weatherBelTranslateData['text'][0];
-            });
+          if (selectedLanguage === englishLanguage) {
+            weatherTodayText.innerHTML = weatherTitle;
+            translateWeatherTitles(weatherTitle);
+          } else if (selectedLanguage === russianLanguage) {
+            translateWeatherTitles(weatherTitle);
+          } else {
+            translateWeatherTitles(weatherTitle);
+          }
 
         } else {
           alert('Input Error / Ошибка ввода');
