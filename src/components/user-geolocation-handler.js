@@ -22,7 +22,7 @@ import {
   windRu
 } from '../constants';
 import { selectedLanguage } from '../main';
-import { translateCityOnBel, translateCityOnRus } from './translate-city-titles';
+import { translateTitles } from './translate-titles';
 import { selectForecastTitles } from './select-forecast-titles';
 
 export const city = document.getElementById('this-city');
@@ -42,8 +42,7 @@ export const fetchUserGeolocation = () => {
 
         if (selectedLanguage === englishLanguage) {
           city.innerHTML = geoData.city;
-          translateCityOnRus(geoData.city);
-          translateCityOnBel(geoData.city);
+          translateTitles(geoData.city, city, 'city');
           selectForecastTitles(
             latitudeTitleOnEng,
             longitudeTitleOnEng,
@@ -53,8 +52,7 @@ export const fetchUserGeolocation = () => {
             humidityTextEn
           );
         } else if (selectedLanguage === russianLanguage) {
-          translateCityOnRus(geoData.city);
-          translateCityOnBel(geoData.city);
+          translateTitles(geoData.city, city, 'city');
           selectForecastTitles(
             latitudeTitleOnRus,
             longitudeTitleOnRus,
@@ -64,8 +62,7 @@ export const fetchUserGeolocation = () => {
             humidityTextRu
           );
         } else {
-          translateCityOnRus(geoData.city);
-          translateCityOnBel(geoData.city);
+          translateTitles(geoData.city, city, 'city');
           selectForecastTitles(
             latitudeTitleOnBel,
             longitudeTitleOnBel,

@@ -1,7 +1,7 @@
 import { celsius, englishLanguage, fahrenheit, russianLanguage } from '../constants';
 import { selectedLanguage, temperatureMeasuringDevice } from '../main';
 import { forecastWeekDay, forecastWeekDayIndex } from './forecast-week-day-handler';
-import { translateWeatherTitles } from './translate-weather-titles';
+import { translateTitles } from './translate-titles';
 
 export const weatherTodayText = document.getElementById('weather-today-text');
 const weatherTodayTemp = document.getElementById('weather-today-temp');
@@ -31,11 +31,11 @@ export const fetchWeatherForecast = (city) => {
 
           if (selectedLanguage === englishLanguage) {
             weatherTodayText.innerHTML = weatherTitle;
-            translateWeatherTitles(weatherTitle);
+            translateTitles(weatherTitle, weatherTodayText, 'weather');
           } else if (selectedLanguage === russianLanguage) {
-            translateWeatherTitles(weatherTitle);
+            translateTitles(weatherTitle, weatherTodayText, 'weather');
           } else {
-            translateWeatherTitles(weatherTitle);
+            translateTitles(weatherTitle, weatherTodayText, 'weather');
           }
 
         } else {
