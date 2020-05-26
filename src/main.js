@@ -20,6 +20,7 @@ import { fetchWeatherForecast } from './components/weather-forecast';
 import { selectLanguageHandler } from './components/select-language-handler';
 import './styles.css';
 import './media-queries.css';
+import {requestRecognition} from "./components/request-recognition";
 
 export let locationRequest;
 export let selectedLanguage = sessionStorage.getItem('lang') || englishLanguage;
@@ -86,6 +87,7 @@ searchForm.addEventListener('submit', event => {
 //  Проверка выбранного языка (После перезагрузки чтобы осталась активной кнопка).
 //-----------------------------------------------------------------------------------
 selectLanguageHandler();
+
 //-----------------------------------------------------------------------------------
 //  Проверка выбранной единицы измерения (После перезагрузки чтобы осталась активной кнопка).
 //-----------------------------------------------------------------------------------
@@ -97,3 +99,9 @@ if (temperatureMeasuringDevice === celsius) {
 }
 
 fetchWeatherForecast('Moscow');
+
+//-----------------------------------------------------------------------------------
+//  Распознавание речи (Запрос прогноза через голосовой обработчик).
+//-----------------------------------------------------------------------------------
+
+requestRecognition();

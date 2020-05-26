@@ -13,6 +13,7 @@ export const details = document.getElementById('details');
 export const longitudeTitle = document.getElementById('longitude-title');
 export const latitudeTitle = document.getElementById('latitude-title');
 export const weekDay = document.getElementById('this-week-day');
+export const voiceSearch = document.getElementById('voice-search');
 export const myInterval = 300;
 export const placeholderOnRusLang = 'Поиск города';
 export const placeholderOnEngLang = 'Search city';
