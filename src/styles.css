@@ -133,6 +133,7 @@ body {
 
 .weather-block__location {
   text-align: center;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 .weather-block__location-city {
@@ -156,6 +157,7 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 45px;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 .weather-block__weather-today-container {
@@ -196,6 +198,7 @@ body {
   display: flex;
   justify-content: space-around;
   padding-top: 45px;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 .weather-block__forecast-on-day {
@@ -231,6 +234,7 @@ body {
   width: 100%;
   text-align: center;
   color: #ffffff;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 .details {
