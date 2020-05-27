@@ -26,6 +26,19 @@ export let locationRequest;
 export let selectedLanguage = sessionStorage.getItem('lang') || englishLanguage;
 export let temperatureMeasuringDevice = sessionStorage.getItem('temp') || celsius;
 
+function loadData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, 2000);
+  })
+}
+
+loadData()
+  .then(() => {
+    let preloaderEl = document.getElementById('preloader');
+    preloaderEl.classList.add('hidden');
+    preloaderEl.classList.remove('visible');
+  });
+
 languageContainer.addEventListener('click', (event) => {
   languageContainer.querySelectorAll('.language-button')
     .forEach(el => el.classList.remove('language-button-active'));

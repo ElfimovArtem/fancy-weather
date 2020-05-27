@@ -264,3 +264,38 @@ body {
 #weather-today-humidity {
   margin: 0;
 }
+
+#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: #414141 url('assets/spinning-circles.svg') no-repeat center center;
+}
+
+.preloader-text {
+  position: absolute;
+  top: 35%;
+  left: 36%;
+  width: 30vw;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 400;
+  color: #ffffff;
+  font-style: italic;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .8s linear;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s .8s, opacity .8s linear;
+}
