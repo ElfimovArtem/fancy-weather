@@ -24,6 +24,7 @@ import {
 import { selectedLanguage } from '../main';
 import { translateTitles } from './translate-titles';
 import { selectForecastTitles } from './select-forecast-titles';
+import { fetchWeatherForecast } from './weather-forecast';
 
 export const city = document.getElementById('this-city');
 export const latitude = document.getElementById('latitude');
@@ -39,6 +40,7 @@ export const fetchUserGeolocation = () => {
         const thisLatitude = Number(local[0]).toFixed(2);
         const thisLongitude = Number(local[1]).toFixed(2);
         city.dataset.cityEn = geoData.city;
+        fetchWeatherForecast(geoData.city);
 
         if (selectedLanguage === englishLanguage) {
           city.innerHTML = geoData.city;

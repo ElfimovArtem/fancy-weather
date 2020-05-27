@@ -19,9 +19,9 @@ import { fetchLocationCoordinates } from './components/location-coordinates-hand
 import { getWeekDay } from './components/week-day-handler';
 import { fetchWeatherForecast } from './components/weather-forecast';
 import { selectLanguageHandler } from './components/select-language-handler';
+import  { requestRecognition } from './components/request-recognition';
 import './styles.css';
 import './media-queries.css';
-import  { requestRecognition } from './components/request-recognition';
 
 export let locationRequest;
 export let selectedLanguage = sessionStorage.getItem('lang') || englishLanguage;
@@ -111,8 +111,6 @@ if (temperatureMeasuringDevice === celsius) {
 } else if (temperatureMeasuringDevice === fahrenheit) {
   temperatureButtonF['classList'].add('temperature-button-active');
 }
-
-fetchWeatherForecast('Moscow');
 
 //-----------------------------------------------------------------------------------
 //  Распознавание речи (Запрос прогноза через голосовой обработчик).
