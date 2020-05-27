@@ -20,7 +20,12 @@
 
 }
 
-@media (min-width: 500px) and (max-width: 759px) {
+@media (min-width: 500px) and (max-width: 799px) {
+
+  .preloader-text {
+    top: 38%;
+    left: 37%;
+  }
 
   .tools-container {
     flex-direction: column;
@@ -86,11 +91,16 @@
     margin: 0 auto;
     padding-left: 0;
     width: 80%;
+    padding-top: 0;
   }
 
 }
 
 @media (min-width: 320px) and (max-width: 499px) {
+
+  .preloader-text {
+    left: 30%;
+  }
 
   .tools-container {
     flex-direction: column;
