@@ -53,3 +53,4 @@ export const humidityTextRu = 'ВЛАЖНОСТЬ:';
 export const humidityTextEn = 'HUMIDITY:';
 export const humidityTextBe = 'ВIЛЬГОСТНАСЦЬ:';
 export const defaultBackgroundUrl = 'https://news.liga.net/images/general/2018/06/19/20180619173140-4592.jpg?v=1529425745';
+export const preloaderTimeout = 2000;

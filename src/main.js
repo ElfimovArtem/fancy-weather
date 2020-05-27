@@ -11,7 +11,8 @@ import {
   celsius,
   fahrenheit,
   temperatureButtonC,
-  temperatureButtonF
+  temperatureButtonF,
+  preloaderTimeout
 } from './constants';
 import { dateNow } from './components/date-handler';
 import { fetchLocationCoordinates } from './components/location-coordinates-handler';
@@ -20,15 +21,15 @@ import { fetchWeatherForecast } from './components/weather-forecast';
 import { selectLanguageHandler } from './components/select-language-handler';
 import './styles.css';
 import './media-queries.css';
-import {requestRecognition} from "./components/request-recognition";
+import  { requestRecognition } from './components/request-recognition';
 
 export let locationRequest;
 export let selectedLanguage = sessionStorage.getItem('lang') || englishLanguage;
 export let temperatureMeasuringDevice = sessionStorage.getItem('temp') || celsius;
 
 function loadData() {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, 2000);
+  return new Promise((resolve) => {
+    setTimeout(resolve, preloaderTimeout);
   })
 }
 
