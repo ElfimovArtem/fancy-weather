@@ -5,8 +5,8 @@ import { city, latitude, longitude } from './user-geolocation-handler';
 
 export let cityOnRusLang;
 
-export const fetchLocationCoordinates = () => {
-  const locationURL = `https://api.opencagedata.com/geocode/v1/json?q=${locationRequest}&key=ed5e8ea04479465c8f1aa6c66c987afb&pretty=1&no_annotations=1`;
+export const fetchLocationCoordinates = (thisLocationRequest) => {
+  const locationURL = `https://api.opencagedata.com/geocode/v1/json?q=${thisLocationRequest}&key=ed5e8ea04479465c8f1aa6c66c987afb&pretty=1&no_annotations=1`;
   fetch(locationURL)
     .then((res) => res.json())
     .then(locationData => {
@@ -35,7 +35,7 @@ export const fetchLocationCoordinates = () => {
         latitude.innerHTML = thisLocationLatitude;
         longitude.innerHTML = thisLocationLongitude;
         cityOnRusLang = fetchCityTitle;
-        enteredRequestTranslate(locationRequest);
+        enteredRequestTranslate(thisLocationRequest);
       } else {
         throw new Error('Input Error / Ошибка ввода');
       }

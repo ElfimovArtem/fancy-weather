@@ -91,7 +91,7 @@ refreshButton.addEventListener('click', () => fetchBackgroundImage());
 searchForm.addEventListener('submit', event => {
   locationRequest = searchCityInput.value;
   searchCityInput.value = '';
-  fetchLocationCoordinates();
+  fetchLocationCoordinates(locationRequest);
   fetchWeatherForecast(locationRequest);
   event.preventDefault();
 });
