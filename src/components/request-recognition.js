@@ -14,12 +14,10 @@ export const requestRecognition = () => {
 
   voiceSearch.onclick = function() {
     recognition.lang = (selectedLanguage === russianLanguage) ? russianLanguage : englishLanguage;
-    console.log(recognition.lang);
     recognition.start();
   };
 
   recognition.onresult = function(event) {
-    console.log(event.results[0][0].transcript);
     searchCityInput.value = event.results[0][0].transcript;
     fetchLocationCoordinates(searchCityInput.value);
     fetchWeatherForecast(searchCityInput.value);

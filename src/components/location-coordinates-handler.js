@@ -1,6 +1,5 @@
 import { createMap } from './map-creator';
 import { enteredRequestTranslate } from './entered-request-handler';
-import { locationRequest } from '../main';
 import { city, latitude, longitude } from './user-geolocation-handler';
 
 export let cityOnRusLang;
